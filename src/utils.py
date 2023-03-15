@@ -37,7 +37,7 @@ def get_image_from_id(img_id: int) -> Union[bytes, Error]:
         return res.content
     # image not found
     elif res.status_code == 404:
-        return Error(2)
+        return Error(2, message=f'image with id {img_id} not found')
     # image server problems
     elif res.status_code // 100 == 5:
         return Error(3)
